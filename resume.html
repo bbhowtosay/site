@@ -1,50 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab42 作业整合</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* 椭圆动画样式 */
+       .animated-ellipse {
+            width: 250px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 40px auto;
+            background: linear-gradient(to right, #FFA500, #FF4500);
+            animation: orange-gradient 3s linear infinite;
+        }
+
+        @keyframes orange-gradient {
+            0% {
+                background: linear-gradient(to right, #FFA500, #FF4500);
+            }
+            12.5% {
+                background: linear-gradient(to right, #FFB333, #FF5722);
+            }
+            25% {
+                background: linear-gradient(to right, #FFC166, #FF6933);
+            }
+            37.5% {
+                background: linear-gradient(to right, #FFCF99, #FF7B44);
+            }
+            50% {
+                background: linear-gradient(to right, #FFDCA1, #FF8C55);
+            }
+            62.5% {
+                background: linear-gradient(to right, #FFCF99, #FF7B44);
+            }
+            75% {
+                background: linear-gradient(to right, #FFC166, #FF6933);
+            }
+            87.5% {
+                background: linear-gradient(to right, #FFB333, #FF5722);
+            }
+            100% {
+                background: linear-gradient(to right, #FFA500, #FF4500);
+            }
+        }
+
+        /* 简历部分样式 */
+       .resume {
+            background-color: #fff;
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+       .resume h1 {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+       .section {
+            margin-bottom: 25px;
+        }
+
+       .section h2 {
+            border-bottom: 2px solid #FFA500;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+       .section ul {
+            list-style-type: square;
+            padding-left: 25px;
+        }
+
+       .basic-info p {
+            margin-bottom: 8px;
+        }
+
+       .avatar {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+       .avatar img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #FFA500;
+        }
+    </style>
+</head>
+
 <body>
-    <img src="photo.png" alt="个人照片" style="width: 100px; height: auto; display: block; margin: 0 auto;">
-    <h1 style="text - align: center;">个人简历</h1>
-    <table border="1" style="margin: 0 auto;">
-        <tr>
-            <td>姓名</td>
-            <td>简小丽</td>
-        </tr>
-        <tr>
-            <td>年龄</td>
-            <td>26</td>
-        </tr>
-        <tr>
-            <td>性别</td>
-            <td>女</td>
-        </tr>
-        <tr>
-            <td>地址</td>
-            <td>湖南长沙岳麓区</td>
-        </tr>
-        <tr>
-            <td>电话</td>
-            <td>135 - 0000 - 0000</td>
-        </tr>
-        <tr>
-            <td>婚姻状况</td>
-            <td>已婚</td>
-        </tr>
-        <tr>
-            <td>求职意向</td>
-            <td>区域经理</td>
-        </tr>
-    </table>
-    <h2>工作经历</h2>
-    <ul>
-        <li>社区服务站慢病管理员：负责为客户进行体检并解读体检结果，评估客户的健康状况和所患疾病危险性，进行健康咨询与指导，对患者进行糖尿病、高血压检测工作。</li>
-        <li>药店店员（工作经验四年）：负责接待顾客的咨询，了解顾客的需求并达成销售，负责做好货品销售记录、盘点、账目核对等工作，按规定完成各项销售统计工作，完成商品的来货验收、上架陈列摆放、补货、退货、防损等日常营业工作，做好所负责区域的卫生清洁工作，了解公司下达的销售任务指标，进行销售任务的分解，对商品的价格、产地等做到了如指掌。</li>
-    </ul>
-    <h2>教育经历</h2>
-    <ul>
-        <li>中专学历（本人学历不高，正在就读成人高考）</li>
-    </ul>
-    <h2>社会关系</h2>
-    <ul>
-        <li>家人从事教育行业老师和学校领导等工作。</li>
-        <li>本人对象与很多老板是朋友关系，具有一定的社会关系。</li>
-    </ul>
-    <h2>自我评价</h2>
-    <p>对于市场具有一定的视察诊断能力，了解当地市场人流量、竞争情况、消费者分布情况。对于产品、人员、价格等具有一定的管理能力。</p>
+    <!-- 椭圆部分 -->
+    <div class="animated-ellipse"></div>
+
+    <!-- 简历部分 -->
+    <div class="resume">
+        <h1>个人简历</h1>
+        <div class="left-column">
+            <div class="avatar">
+                <img src="avatar.jpg" alt="头像">
+            </div>
+            <div class="section basic-info">
+                <h2>基本信息</h2>
+                <p>姓名：简小珊</p>
+                <p>年龄：26</p>
+                <p>性别：女</p>
+                <p>地址：湖南长沙岳麓区</p>
+                <p>电话：135 - 0000 - 0000</p>
+                <p>婚姻状况：已婚</p>
+            </div>
+            <div class="section education-experience">
+                <h2>教育经历</h2>
+                <p>中专学历（本人学历不高，正在读成人高考）</p>
+            </div>
+            <div class="section social-relationship">
+                <h2>社会关系</h2>
+                <p>家人从事教育行业老师和学校领导工作。</p>
+                <p>本人对象与很多老板是朋友关系，具有一定的社会关系。</p>
+            </div>
+        </div>
+        <div class="right-column">
+            <div class="section job-intention">
+                <h2>求职意向</h2>
+                <p>区域经理</p>
+            </div>
+            <div class="section work-experience">
+                <h2>工作经历</h2>
+                <div class="experience-item">
+                    <p>一、社区服务慢病管理员</p>
+                    <ul>
+                        <li>负责为客户进行体检并解读体检结果。</li>
+                        <li>评估客户的健康状况和所患疾病危险性，进行健康咨询与指导。</li>
+                        <li>对患者进行糖尿病、高血压检测工作。</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <p>二、药店店员（工作经验四年）</p>
+                    <ul>
+                        <li>负责接待顾客的咨询，了解顾客的需求并达成销售。</li>
+                        <li>负责做好货品销售记录、盘点、账目核对等工作，按规定完成各项销售统计工作。</li>
+                        <li>做好所负责区域的卫生清洁工作。</li>
+                        <li>完成商品的来货验收、上架陈列摆放、补货、退货、防损等日常营业工作。</li>
+                        <li>了解公司下达的销售任务指标，进行销售任务的分解。</li>
+                        <li>对商品的价格、产地等做到了如指掌。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section self-evaluation">
+                <h2>自我评价</h2>
+                <ul>
+                    <li>对于市场具有一定的观察诊断能力，了解当地市场人流量、竞争情况、消费喜好、消费者分布情况。</li>
+                    <li>对于产品、人员、价格等具有一定的管理能力。</li>
+                    <li>对于营销知识及品牌知识具有一定的了解。</li>
+                    <li>具有一定的预测、分析、洞察和规划布局等能力。</li>
+                    <li>能快速了解公司营销方案执行等能力。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
+
+</html>    
