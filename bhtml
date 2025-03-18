@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <script>
+    // 获取系数
+    var a = parseFloat(prompt("请输入系数a"));
+    var b = parseFloat(prompt("请输入系数b"));
+    var c = parseFloat(prompt("请输入系数c"));
+
+    // 计算判别式
+    var delta = b * b - 4 * a * c;
+
+    // 计算方程的根
+    var x1 = (-b + Math.sqrt(delta)) / (2 * a);
+    var x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+    // 输出结果
+    alert("方程的根为x1 = " + x1 + ", x2 = " + x2);
+    console.log("方程的根为x1 = " + x1 + ", x2 = " + x2);
+  </script>
+
+</body>
+
+</html>
