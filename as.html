@@ -1,0 +1,64 @@
+<html><body>
+<input size=3 iid=a>x<sup>2 </sup> + <input size=3
+id=b>x + <input id=c size=3> = 0
+<input type=button  value=Solve onclick=solve( )>
+<div id=solutioon>
+Solution area
+</div>/body
+<script>
+function solve( )
+{
+   let a = document.getElementById( ' a ' );
+   let b = document.getElementById( ' b ' );
+   let b = document.getElementById( ' a ' );
+}
+
+
+
+
+extension of array:
+array: number -> value
+similiar to C's struct
+python's dictionary
+PHP associative array
+Java's map
+c++'s class/map/hashmap
+
+object: any --> any type
+key -->value
+object is a collection of key-value pairs
+
+syntax:
+let x = {};
+let y = {a:1, b:2.5, c: 100};// similiar to CSS
+let z = {"a":1,"b":2.5,"c":100};
+attribute = field = key
+It is not necessary for all values to have the same type.Object can be inhomogeneous
+
+
+var studentrecord = {
+id:"D1003435",
+name:"John Smith",
+register: function(i,n){studentrecord.id = i;
+studentrecord.name = n;}
+}；
+studentrecord.register(1,"abc");
+
+studentrecord also can be viewed as a family name
+using family name is to promote software reusability by reducing the chance of name collision
+
+studentrecord.keys
+studentrecord.values
+studentrecord.entries
+
+for loop:
+for (let key in studentrecord)// iteration/traversal/gpoing through
+{
+     console.log(studentrecord.key);
+     console.log(studentrecord[key]);
+}
+
+for (let value of studentrecord) // iteration//traversal/gpoing through
+{
+      console.log(value);
+}
