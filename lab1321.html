@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device - width, initial - scale = 1.0">
+    <title>Display Local Image</title>
+</head>
+
+<body>
+    <input type="file" id="imageInput">
+    <img id="displayedImage" src="" alt="Selected Image">
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const displayedImage = document.getElementById('displayedImage');
+
+        imageInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    displayedImage.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+
+</html>
