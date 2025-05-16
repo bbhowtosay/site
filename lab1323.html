@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device - width, initial - scale = 1.0">
+    <title>Display CSV in Table</title>
+</head>
+
+<body>
+    <input type="file" id="csvInput">
+    <script>
+        const csvInput = document.getElementById('csvInput');
+        csvInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const csvData = event.target.result;
+                    const lines = csvData.split('\n');
+                    const table = document.createElement('table');
+                    for (let i = 0; i < lines.length; i++) {
+                        const cells = lines[i].split(',');
+                        const row = document.createElement('tr');
+                        for (let j = 0; j < cells.length; j++) {
+                            const cell = document.createElement('td');
+                            cell.textContent = cells[j];
+                            row.appendChild(cell);
+                        }
+                        table.appendChild(row);
+                    }
+                    document.body.appendChild(table);
+                };
+                reader.readAsText(file);
+            }
+        });
+    </script>
+</body>
+
+</html>
