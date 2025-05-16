@@ -1,0 +1,106 @@
+from flask import Flask
+import random
+import string
+
+app = Flask(__name__)
+
+@app.route('/codes')
+def generate_codes():
+    all_codes = []
+    for _ in range(100):
+        code = ''.join(random.choices(string.digits + string.ascii_lowercase, k = 10))
+        all_codes.append(code)
+
+    with open('codes.txt', 'w') as f:
+        for i in range(0, 100, 5):
+            line = " ".join(all_codes[i:i + 5]) + '0\n'
+            f.write(line)
+
+    return "Codes generated and saved to codes.txt"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/signin')
+def signin_form():
+    return render_template('signin.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8">
+    <title>Sign in</title>
+</head>
+
+<body>
+    <form method="post" action="http://localhost/verify">
+        <label for="sid">Student ID:</label>
+        <input type="text" id="sid" name="sid" required><br>
+        <label for="code">Sign - in Code:</label>
+        <input type="text" id="code" name="code" required><br>
+        <input type="submit" value="Sign in">
+    </form>
+</body>
+
+</html>
+from flask import Flask, request
+
+app = Flask(__name__)
+
+@app.route('/verify', methods=['POST', 'GET'])
+def verify_code():
+    code_map = {}
+    with open('codes.txt', 'r') as f:
+        for line in f:
+            parts = line.strip().split()
+            for part in parts:
+                code, status = part.split('o')
+                code_map[code] = status
+
+    if request.method == 'POST':
+        code = request.form.get('code')
+        sid = request.form.get('sid')
+    else:
+        code = request.args.get('code')
+        sid = request.args.get('sid')
+
+    if code not in code_map:
+        return "Wrong code entered"
+    elif code_map[code] == '0':
+        code_map[code] = sid
+        with open('codes.txt', 'w') as f:
+            for code, value in code_map.items():
+                f.write(f"{code}o{value}\n")
+        return "You are successfully signed in"
+    elif sid == code_map[code]:
+        return "you have signed in already"
+    else:
+        return f"The code is used by {code_map[code]} and cannot be shared"
+
+if __name__ == '__main__':
+    app.run(debug=True)
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/attended')
+def get_attended_students():
+    attended_students = []
+    with open('codes.txt', 'r') as f:
+        for line in f:
+            parts = line.strip().split()
+            for part in parts:
+                code, sid = part.split('o')
+                if sid != '0':
+                    attended_students.append(sid)
+    result = "\n".join(attended_students)
+    return result
+
+if __name__ == '__main__':
+    app.run(debug=True)
