@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF - 8">
+    <meta name="viewport" content="width=device - width, initial - scale = 1.0">
+    <title>Report Click Coordinates</title>
+</head>
+
+<body>
+    <div id="targetElement" style="width: 200px; height: 200px; background - color: lightblue;">
+        Click me
+    </div>
+    <script>
+        const targetElement = document.getElementById('targetElement');
+        targetElement.addEventListener('click', function (event) {
+            const x = event.offsetX;
+            const y = event.offsetY;
+            console.log(`Clicked at coordinates: (${x}, ${y})`);
+        });
+    </script>
+</body>
+
+</html>
